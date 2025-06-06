@@ -1,0 +1,766 @@
+/* Estilos Gerais e Reset */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif; /* Fonte amigável */
+    line-height: 1.6;
+    background-color: #F8F8F8; /* Bege/creme claro para o fundo geral */
+    color: #333;
+    scroll-behavior: smooth; /* Rolagem suave para âncoras */
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Botões Reutilizáveis */
+.btn {
+    display: inline-block;
+    padding: 12px 25px;
+    margin: 10px 5px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1.1em;
+    font-weight: bold;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.btn.primary {
+    background-color: #795548; /* Marrom terroso */
+    color: #fff;
+}
+
+.btn.primary:hover {
+    background-color: #5D4037; /* Marrom mais escuro no hover */
+    transform: translateY(-2px);
+}
+
+.btn.quiz-btn {
+    background-color: #FF7043; /* Laranja terroso vibrante */
+    color: #fff;
+}
+
+.btn.quiz-btn:hover {
+    background-color: #F4511E; /* Laranja mais escuro no hover */
+    transform: translateY(-2px);
+}
+
+
+/* --- Navbar --- */
+.navbar {
+    background-color: #B2EBF2; /* Verde-menta suave */
+    color: #004D40; /* Verde escuro */
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.navbar-brand a {
+    font-size: 1.8em;
+    font-weight: bold;
+    color: #004D40; /* Verde escuro */
+}
+
+.navbar-brand a i {
+    margin-right: 8px;
+    color: #4CAF50; /* Verde vibrante para o ícone */
+}
+
+.navbar-links {
+    display: flex;
+    gap: 30px;
+}
+
+.navbar-links li a {
+    color: #004D40; /* Verde escuro */
+    font-weight: bold;
+    padding: 5px 0;
+    position: relative; /* Para o sublinhado animado */
+    transition: color 0.3s ease;
+}
+
+.navbar-links li a::after {
+    content: '';
+    position: absolute;
+    width: 0;
+    height: 3px;
+    background-color: #795548; /* Marrom terroso */
+    left: 0;
+    bottom: -5px;
+    transition: width 0.3s ease-in-out;
+}
+
+.navbar-links li a:hover {
+    color: #795548; /* Marrom terroso no hover */
+}
+
+.navbar-links li a:hover::after {
+    width: 100%; /* Expande o sublinhado no hover */
+}
+
+.navbar-icons {
+    font-size: 1.3em;
+}
+
+.navbar-icons a {
+    color: #004D40;
+    transition: color 0.3s ease;
+}
+
+.navbar-icons a:hover {
+    color: #795548;
+}
+
+.hamburger-menu {
+    background: none;
+    border: none;
+    color: #004D40;
+    font-size: 1.8em;
+    cursor: pointer;
+    display: none; /* Escondido por padrão em telas maiores */
+}
+
+
+/* --- Main Content --- */
+main {
+    padding-top: 80px; /* Espaço para o navbar fixo */
+}
+
+/* Seção Hero */
+.hero-section {
+    background: url('https://via.placeholder.com/1920x800/8BC34A/FFFFFF?text=Campo+e+Cidade+Unidos') no-repeat center center/cover;
+    color: #fff;
+    text-align: center;
+    padding: 180px 20px;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.hero-section::before { /* Overlay para melhorar legibilidade do texto */
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.4); /* Escurece a imagem */
+    z-index: 1;
+}
+
+.hero-content {
+    max-width: 900px;
+    z-index: 2; /* Acima do overlay */
+    padding: 30px;
+    background-color: rgba(0,0,0,0.2); /* Fundo semi-transparente para o texto */
+    border-radius: 10px;
+}
+
+.hero-section h1 {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+}
+
+.hero-section p {
+    font-size: 1.4em;
+    margin-bottom: 40px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
+}
+
+/* Seções Gerais (estilos comuns) */
+section {
+    padding: 80px 20px;
+    text-align: center;
+}
+
+section h2 {
+    font-size: 2.8em;
+    margin-bottom: 60px;
+    color: #004D40; /* Verde escuro */
+    position: relative;
+    padding-bottom: 10px;
+}
+
+section h2::after { /* Sublinhado decorativo */
+    content: '';
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    bottom: 0;
+    width: 80px;
+    height: 4px;
+    background-color: #795548; /* Marrom terroso */
+    border-radius: 2px;
+}
+
+
+/* Seção "O Campo na Cidade" */
+.about-section {
+    background-color: #FFFFFF; /* Fundo branco */
+}
+
+.about-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 40px;
+    text-align: left;
+}
+
+.about-text {
+    flex: 1 1 500px; /* Flexível, com largura base */
+}
+
+.about-text h2 {
+    font-size: 2.5em;
+    margin-bottom: 25px;
+    color: #004D40;
+    text-align: left;
+}
+.about-text h2::after {
+    left: 0;
+    transform: translateX(0);
+}
+
+.about-text p {
+    font-size: 1.1em;
+    line-height: 1.8;
+    color: #555;
+    margin-bottom: 15px;
+}
+
+.about-image {
+    flex: 1 1 400px; /* Flexível, com largura base */
+    text-align: center;
+}
+
+.about-image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.15);
+}
+
+
+/* Seção "Vídeos e Histórias" */
+.videos-stories-section {
+    background-color: #F8F8F8; /* Bege/creme claro */
+}
+
+.video-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 30px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.video-card {
+    background-color: #fff;
+    border-radius: 12px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+    overflow: hidden;
+    flex: 1 1 calc(33% - 40px); /* 3 cards por linha */
+    max-width: 380px;
+    text-align: left;
+    transition: transform 0.3s ease;
+}
+
+.video-card:hover {
+    transform: translateY(-8px);
+}
+
+.video-card iframe {
+    width: 100%;
+    height: 220px; /* Altura fixa para os vídeos */
+    display: block;
+    border-top-left-radius: 12px;
+    border-top-right-radius: 12px;
+}
+
+.video-card h3 {
+    font-size: 1.4em;
+    color: #004D40;
+    margin: 20px 20px 10px;
+}
+
+.video-card p {
+    font-size: 0.95em;
+    color: #666;
+    padding: 0 20px 20px;
+}
+
+
+/* Seção "Quiz Rural" */
+.quiz-section {
+    background-color: #DCEDC8; /* Verde pastel */
+    padding: 80px 20px;
+}
+
+.quiz-section p {
+    font-size: 1.2em;
+    margin-bottom: 40px;
+    color: #444;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.quiz-content {
+    background-color: #fff;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    max-width: 700px;
+    margin: 60px auto 0; /* Espaço do botão */
+    text-align: left;
+}
+
+.quiz-content h3 {
+    font-size: 1.8em;
+    color: #004D40;
+    margin-bottom: 25px;
+}
+
+.quiz-content form label {
+    display: block;
+    font-size: 1.1em;
+    margin-bottom: 15px;
+    cursor: pointer;
+    color: #555;
+}
+
+.quiz-content form input[type="radio"] {
+    margin-right: 10px;
+    transform: scale(1.2);
+}
+
+.quiz-content .btn {
+    width: auto;
+    padding: 10px 30px;
+    margin-top: 20px;
+}
+
+.answer-feedback {
+    margin-top: 20px;
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+
+/* Seção "Galeria de Experiências" */
+.gallery-section {
+    background-color: #FFFFFF; /* Fundo branco */
+}
+
+.portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Colunas responsivas */
+    gap: 25px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.portfolio-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    box-shadow: 0 6px 12px rgba(0,0,0,0.1);
+}
+
+.portfolio-item img {
+    width: 100%;
+    height: 250px; /* Altura fixa para as imagens da galeria */
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.portfolio-item:hover img {
+    transform: scale(1.08); /* Efeito de zoom */
+}
+
+.portfolio-item .overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 77, 64, 0.8); /* Verde escuro com transparência */
+    color: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.4em;
+    font-weight: bold;
+    opacity: 0;
+    transition: opacity 0.4s ease;
+    text-align: center;
+    padding: 20px;
+}
+
+.portfolio-item:hover .overlay {
+    opacity: 1;
+}
+
+
+/* Seção de Contato */
+.contact-section {
+    background-color: #D7CCC8; /* Marrom claro/areia */
+    padding: 80px 20px;
+}
+
+.contact-section h2 {
+    color: #004D40;
+}
+
+.contact-content {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 50px;
+    max-width: 1000px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.contact-info {
+    flex: 1 1 400px;
+    padding: 20px;
+    color: #444;
+}
+
+.contact-info p {
+    margin-bottom: 20px;
+    font-size: 1.15em;
+    line-height: 1.7;
+}
+
+.contact-info i {
+    margin-right: 12px;
+    color: #004D40; /* Verde escuro */
+    font-size: 1.2em;
+}
+
+.contact-form {
+    flex: 1 1 450px;
+    background-color: #FFFFFF;
+    padding: 40px;
+    border-radius: 15px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+}
+
+.contact-form input,
+.contact-form textarea {
+    width: 100%;
+    padding: 14px;
+    margin-bottom: 25px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 1.05em;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.contact-form textarea {
+    resize: vertical;
+    min-height: 120px;
+}
+
+.contact-form button {
+    width: 100%;
+    padding: 15px;
+}
+
+
+/* --- Rodapé (Footer) --- */
+.footer {
+    background-color: #004D40; /* Verde escuro */
+    color: #E0F2F1; /* Verde muito claro */
+    padding: 60px 20px 30px;
+    text-align: center;
+}
+
+.footer-columns {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    max-width: 1200px;
+    margin: 0 auto 40px;
+}
+
+.footer-col {
+    flex: 1 1 280px; /* Colunas flexíveis */
+    padding: 15px;
+    text-align: left;
+}
+
+.footer-col h3 {
+    font-size: 1.6em;
+    margin-bottom: 25px;
+    color: #B2EBF2; /* Verde-menta suave */
+    display: flex;
+    align-items: center;
+}
+
+.footer-col h3 i {
+    margin-right: 10px;
+    font-size: 1.1em;
+    color: #4CAF50;
+}
+
+.footer-col p {
+    font-size: 0.95em;
+    line-height: 1.8;
+    color: #CFD8DC; /* Cinza azulado claro */
+}
+
+.footer-col ul {
+    list-style: none;
+}
+
+.footer-col ul li {
+    margin-bottom: 12px;
+}
+
+.footer-col ul li a {
+    color: #E0F2F1;
+    transition: color 0.3s ease;
+    font-size: 1em;
+}
+
+.footer-col ul li a:hover {
+    color: #795548; /* Marrom terroso no hover */
+}
+
+.social-icons {
+    margin-top: 20px;
+    display: flex;
+    gap: 20px;
+}
+
+.social-icons a {
+    color: #E0F2F1;
+    font-size: 1.8em;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: #795548; /* Marrom terroso no hover */
+}
+
+.footer-bottom {
+    margin-top: 40px;
+    padding-top: 25px;
+    border-top: 1px solid #265B50; /* Verde escuro mais claro */
+    font-size: 0.9em;
+    color: #B2EBF2; /* Verde-menta suave */
+}
+
+
+/* --- Responsividade (Media Queries) --- */
+
+/* Para tablets e telas menores (até 992px) */
+@media (max-width: 992px) {
+    .navbar-links {
+        display: none; /* Esconde os links por padrão */
+        flex-direction: column;
+        width: 100%;
+        background-color: #B2EBF2; /* Verde-menta suave */
+        position: absolute;
+        top: 60px; /* Altura do navbar */
+        left: 0;
+        padding: 20px 0;
+        text-align: center;
+        box-shadow: 0 5px 10px rgba(0,0,0,0.15);
+    }
+
+    .navbar-links.active {
+        display: flex; /* Mostra os links quando a classe 'active' está presente */
+    }
+
+    .navbar-links li {
+        margin: 15px 0;
+    }
+
+    .navbar-links li a {
+        font-size: 1.2em;
+        padding: 10px 0;
+        display: block;
+    }
+    .navbar-links li a::after { /* Remove o sublinhado animado para mobile */
+        display: none;
+    }
+
+    .navbar-icons {
+        display: none; /* Esconde ícones para simplificar em mobile */
+    }
+
+    .hamburger-menu {
+        display: block; /* Mostra o menu hambúrguer */
+    }
+
+    .hero-section {
+        padding: 120px 20px;
+        min-height: 450px;
+    }
+    .hero-section h1 {
+        font-size: 2.5em;
+    }
+    .hero-section p {
+        font-size: 1.1em;
+    }
+
+    section {
+        padding: 60px 20px;
+    }
+    section h2 {
+        font-size: 2.2em;
+        margin-bottom: 40px;
+    }
+
+    .about-content, .contact-content, .footer-columns {
+        flex-direction: column; /* Empilha colunas em telas menores */
+        align-items: center; /* Centraliza itens */
+        gap: 30px;
+    }
+
+    .about-text, .about-image, .contact-info, .contact-form, .footer-col {
+        flex: 1 1 100%; /* Ocupa a largura total */
+        max-width: 95%; /* Um pouco de padding nas laterais */
+    }
+    .about-text h2 {
+        text-align: center;
+    }
+    .about-text h2::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+
+    .video-card {
+        flex: 1 1 calc(50% - 30px); /* 2 cards por linha */
+        max-width: 450px;
+    }
+    .portfolio-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    }
+}
+
+/* Para celulares (até 576px) */
+@media (max-width: 576px) {
+    .navbar {
+        padding: 10px 15px;
+    }
+    .navbar-brand a {
+        font-size: 1.6em;
+    }
+    .hamburger-menu {
+        font-size: 1.6em;
+    }
+
+    .hero-section {
+        padding: 100px 15px;
+        min-height: 350px;
+    }
+    .hero-section h1 {
+        font-size: 1.8em;
+    }
+    .hero-section p {
+        font-size: 0.9em;
+    }
+    .btn {
+        padding: 10px 20px;
+        font-size: 0.95em;
+        display: block; /* Botões empilhados em celulares */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    section {
+        padding: 50px 15px;
+    }
+    section h2 {
+        font-size: 1.8em;
+        margin-bottom: 30px;
+    }
+
+    .about-text p, .contact-info p {
+        font-size: 1em;
+    }
+
+    .video-card {
+        flex: 1 1 100%; /* 1 card por linha */
+        max-width: 100%;
+    }
+    .video-card iframe {
+        height: 180px;
+    }
+
+    .quiz-content {
+        padding: 30px;
+        max-width: 100%;
+        border-radius: 10px;
+    }
+    .quiz-content h3 {
+        font-size: 1.5em;
+    }
+    .quiz-content form label {
+        font-size: 1em;
+    }
+
+    .portfolio-grid {
+        grid-template-columns: 1fr; /* 1 imagem por linha */
+        gap: 15px;
+    }
+    .portfolio-item img {
+        height: 200px;
+    }
+
+    .contact-form {
+        padding: 30px;
+        border-radius: 10px;
+    }
+    .contact-form input, .contact-form textarea {
+        margin-bottom: 20px;
+    }
+
+    .footer-col {
+        text-align: center;
+    }
+    .footer-col h3 {
+        justify-content: center; /* Centraliza ícone e texto no rodapé */
+    }
+    .social-icons {
+        justify-content: center;
+    }
+}
